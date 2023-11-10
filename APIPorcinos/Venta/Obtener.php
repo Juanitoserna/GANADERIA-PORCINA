@@ -5,7 +5,7 @@
 
     include '../Conexion.php';
 
-    $consulta = $base_de_datos->query("SELECT * FROM porcicultor");
+    $consulta = $base_de_datos->query("SELECT * FROM venta");
     $datos = $consulta->fetchAll();
 
     $respuesta['registros'] = $datos;

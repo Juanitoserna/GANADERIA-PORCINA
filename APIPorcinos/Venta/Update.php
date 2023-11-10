@@ -5,28 +5,20 @@
     
     include '../Conexion.php';
 
-    if (!empty($_POST['id_porcicultor']) and !empty($_POST['nombre']) and !empty($_POST['apellido']) and !empty($_POST['contacto']) and !empty($_POST['correo']) and !empty($_POST['experiencia']) and !empty($_POST['passw']) and !empty($_POST['id_finca'])) {
+    if (!empty($_POST['id_venta']) and !empty($_POST['precio_peso']) and !empty($_POST['subtotal']) and !empty($_POST['id_cerdo']) ) {
 
-        $id_porcicultor = $_POST['id_porcicultor'];
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $contacto = $_POST['contacto'];
-        $correo = $_POST['correo'];
-        $experiencia = $_POST['experiencia'];
-        $passw = $_POST['passw'];
-        $id_finca = $_POST['id_finca'];
+        $id_venta = $_POST['id_venta'];
+        $precio_peso = $_POST['precio_peso'];
+        $subtotal = $_POST['subtotal'];
+        $id_cerdo = $_POST['id_cerdo'];
 
-        try {:id, 
-            $consulta = $base_de_datos->prepare("UPDATE porcicultor SET nombre=:nom, apellido=:ape, contacto=:con, correo=:cor, experiencia=:exp, passw=:pas, id_finca=:finca WHERE id_porcicultor = :id ");
+        try {
+            $consulta = $base_de_datos->prepare("UPDATE venta SET precio_peso=:pp, subtotal=:sub, id_cerdo=:cerdo WHERE id_venta = :id ");
 
-            $consulta->bindParam(':id', $id_porcicultor);
-            $consulta->bindParam(':nom', $nombre);
-            $consulta->bindParam(':ape', $apellido);
-            $consulta->bindParam(':con', $contacto);
-            $consulta->bindParam(':cor', $correo);
-            $consulta->bindParam(':exp', $experiencia);
-            $consulta->bindParam(':pas', $passw);
-            $consulta->bindParam(':finca', $id_finca);
+            $consulta->bindParam(':id', $id_venta);
+            $consulta->bindParam(':pp', $precio_peso);
+            $consulta->bindParam(':sub', $subtotal);
+            $consulta->bindParam(':cerdo', $id_cerdo);
             
             $proceso = $consulta->execute();
 

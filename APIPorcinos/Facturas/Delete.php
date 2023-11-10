@@ -5,14 +5,14 @@
     
     include '../Conexion.php';
 
-    if (!empty($_POST['id_porcicultor'])) {
+    if (!empty($_POST['id_factura'])) {
 
-        $id_porcicultor = $_POST['id_porcicultor'];
+        $id_factura = $_POST['id_factura'];
         
         try {
-            $consulta = $base_de_datos->prepare("DELETE FROM porcicultor WHERE id_porcicultor = :id ");
+            $consulta = $base_de_datos->prepare("DELETE FROM factura WHERE id_factura = :id ");
 
-            $consulta->bindParam(':id', $id_porcicultor);
+            $consulta->bindParam(':id', $id_factura);
             $proceso = $consulta->execute();
 
             if( $proceso ){

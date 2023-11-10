@@ -5,42 +5,33 @@
     
     include '../Conexion.php';
 
-    if (!empty($_POST['id_porcicultor']) and !empty($_POST['nombre']) and !empty($_POST['apellido']) and !empty($_POST['contacto']) and !empty($_POST['correo']) and !empty($_POST['experiencia']) and !empty($_POST['passw']) and !empty($_POST['id_finca'])) {
+    if (!empty($_POST['id_finca']) and !empty($_POST['nombre']) and !empty($_POST['ubicacion']) and !empty($_POST['id_administrador']) ) {
 
-
-        $id_porcicultor = $_POST['id_porcicultor'];
-        $nombre = $_POST['nombre'];
-        $apellido = $_POST['apellido'];
-        $contacto = $_POST['contacto'];
-        $correo = $_POST['correo'];
-        $experiencia = $_POST['experiencia'];
-        $passw = $_POST['passw'];
         $id_finca = $_POST['id_finca'];
-        
-        try {
-            $consulta = $base_de_datos->prepare("INSERT INTO porcicultor (id_porcicultor,nombre,apellido,contacto,correo,experiencia,passw,id_finca) VALUES(:id, :nom, :ape, :con, :cor, :exp, :pas, :finca) ");
+        $nombre = $_POST['nombre'];
+        $ubicacion = $_POST['ubicacion'];
+        $id_administrador = $_POST['id_administrador'];
 
-            $consulta->bindParam(':id', $id_porcicultor);
+        try {
+            $consulta = $base_de_datos->prepare("UPDATE personas SET nombre=:nom, ubicacion=:ubi, id_administrador=:admi WHERE id_finca = :id ");
+
+            $consulta->bindParam(':id', $id_finca);
             $consulta->bindParam(':nom', $nombre);
-            $consulta->bindParam(':ape', $apellido);
-            $consulta->bindParam(':con', $contacto);
-            $consulta->bindParam(':cor', $correo);
-            $consulta->bindParam(':exp', $experiencia);
-            $consulta->bindParam(':pas', $passw);
-            $consulta->bindParam(':finca', $id_finca);
+            $consulta->bindParam(':ubi', $ubicacion);
+            $consulta->bindParam(':admi', $id_administrador);
             
             $proceso = $consulta->execute();
 
             if( $proceso ){
                 $respuesta = [
                                 'status' => true,
-                                'mesagge' => "OK##CLIENT##INSERT"
+                                'mesagge' => "OK##CERDO##UPDATE"
                               ];
                 echo json_encode($respuesta);
             }else{
                 $respuesta = [
                                 'status' => false,
-                                'mesagge' => "ERROR##CLIENT##INSERT"
+                                'mesagge' => "ERROR##CERDO##UPDATE"
                               ];
                 echo json_encode($respuesta);
             }

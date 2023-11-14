@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Login;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Equipo
- */
 public class Login extends javax.swing.JFrame {
 
     public Login() {
@@ -19,20 +11,21 @@ public class Login extends javax.swing.JFrame {
     }
     
     public void initAlternComponents(){
-        Image imgUsuario = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/user.png"));
+        setLocationRelativeTo(null);
+        Image imgUsuario = getToolkit().createImage(ClassLoader.getSystemResource(""));
         imgUsuario = imgUsuario.getScaledInstance(50, 40, Image.SCALE_SMOOTH);
         jLabelusuario.setIcon(new ImageIcon(imgUsuario));
         
-        Image imgCandado = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/candado.jpg"));
+        Image imgCandado = getToolkit().createImage(ClassLoader.getSystemResource(""));
         imgCandado = imgCandado.getScaledInstance(50,40, Image.SCALE_SMOOTH);
         jLabelCandado.setIcon(new ImageIcon(imgCandado));
         
-        Image imgCandado2 = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/candado2.jpg"));
+        Image imgCandado2 = getToolkit().createImage(ClassLoader.getSystemResource(""));
         imgCandado2 = imgCandado2.getScaledInstance(30,20, Image.SCALE_SMOOTH);
         jLabelCandado2.setIcon(new ImageIcon(imgCandado2));
     }
 
-    @SuppressWarnings("unchecked")
+  
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -52,7 +45,10 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabelimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerdoFondo.jpg"))); // NOI18N
+        jLabelimg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondocerdos1.jpg"))); // NOI18N
+        jLabelimg.setMaximumSize(new java.awt.Dimension(700, 500));
+        jLabelimg.setMinimumSize(new java.awt.Dimension(300, 100));
         jLabelimg.setPreferredSize(new java.awt.Dimension(500, 500));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

@@ -19,6 +19,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public VistaAdministrador() {
         initComponents();
         cargarDatos();
+        interfazCentral();
+    }
+    
+    public void interfazCentral(){
+        setLocationRelativeTo(null);
     }
 
   
@@ -54,14 +59,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         CampoFoto.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -74,15 +81,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
         CampoFotoLayout.setHorizontalGroup(
             CampoFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CampoFotoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
         );
         CampoFotoLayout.setVerticalGroup(
             CampoFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
-        perfil.setBackground(new java.awt.Color(255, 255, 255));
         perfil.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         perfil.setForeground(new java.awt.Color(0, 0, 0));
         perfil.setText("PERFIL");
@@ -106,13 +112,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 .addComponent(Campo_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(77, 77, 77)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(CampoFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(perfil)
+                        .addGap(7, 7, 7)
+                        .addComponent(perfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(78, 78, 78))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -127,10 +134,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        boton.setBackground(new java.awt.Color(0, 0, 0));
+        boton.setBackground(new java.awt.Color(255, 255, 255));
         boton.setForeground(new java.awt.Color(0, 0, 0));
 
-        C_Porcinos.setBackground(new java.awt.Color(255, 255, 255));
         C_Porcinos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         C_Porcinos.setForeground(new java.awt.Color(0, 0, 0));
         C_Porcinos.setText("Control de Porcionos");
@@ -140,7 +146,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
             }
         });
 
-        C_Crecimiento.setBackground(new java.awt.Color(255, 255, 255));
         C_Crecimiento.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         C_Crecimiento.setForeground(new java.awt.Color(0, 0, 0));
         C_Crecimiento.setText("Control de Crecimiento ");
@@ -150,12 +155,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Cerrar Session");
 
-        C_Crecimiento1.setBackground(new java.awt.Color(255, 255, 255));
         C_Crecimiento1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         C_Crecimiento1.setForeground(new java.awt.Color(0, 0, 0));
         C_Crecimiento1.setText("Registro Posicultores");
@@ -172,17 +175,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
             .addGroup(botonLayout.createSequentialGroup()
                 .addGroup(botonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(botonLayout.createSequentialGroup()
-                        .addGroup(botonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(botonLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(C_Porcinos, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(botonLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(C_Crecimiento))
-                            .addGroup(botonLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jButton3)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(C_Porcinos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(4, 4, 4))
+                    .addGroup(botonLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(C_Crecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(botonLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(39, 39, 39))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, botonLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(C_Crecimiento1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -197,9 +199,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 .addComponent(C_Crecimiento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(C_Crecimiento1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addGap(126, 126, 126)
                 .addComponent(jButton3)
-                .addGap(18, 18, 18))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         Vista_info.setBackground(new java.awt.Color(255, 255, 255));
@@ -222,23 +224,26 @@ public class VistaAdministrador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(boton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(boton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Vista_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Vista_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(boton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Vista_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Vista_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,43 +294,50 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }
     
     private void agregarPanel() {
-        RegistrarPosicultores p = new RegistrarPosicultores();
-        p.setSize(550, 440);
-        p.setLocation(5, 5);
+        RegistrarPosicultores p1 = new RegistrarPosicultores();
+        p1.setSize(550, 440);
+        p1.setLocation(5, 5);
+        setLocationRelativeTo(null);
         Vista_info.removeAll();
-        Vista_info.add(p, BorderLayout.CENTER);
         Vista_info.revalidate();
         Vista_info.repaint();
+        Vista_info.setLayout(new BorderLayout());
+        Vista_info.add(p1, BorderLayout.CENTER);
+
+
     }
     
     private void agregarPanel2() {
-        ControlPorcinos p = new ControlPorcinos();
-        p.setSize(550, 440);
-        p.setLocation(5, 5);
+        ControlPorcinos p2 = new ControlPorcinos();
+        p2.setSize(550, 440);
+        p2.setLocation(5, 5);
         Vista_info.removeAll();
-        Vista_info.add(p, BorderLayout.CENTER);
         Vista_info.revalidate();
         Vista_info.repaint();
+        Vista_info.setLayout(new BorderLayout());
+        Vista_info.add(p2, BorderLayout.CENTER);
     }
     
     private void agregarPanel3() {
-        VistadePerfil p = new VistadePerfil();
-        p.setSize(550, 440);
-        p.setLocation(5, 5);
+        VistadePerfil p3 = new VistadePerfil();
+        p3.setSize(550, 440);
+        p3.setLocation(5, 5);
         Vista_info.removeAll();
-        Vista_info.add(p, BorderLayout.CENTER);
         Vista_info.revalidate();
         Vista_info.repaint();
+        Vista_info.setLayout(new BorderLayout());
+        Vista_info.add(p3, BorderLayout.CENTER);
     }
     
     private void agregarPane4() {
-        ControldeCrecimiento p = new ControldeCrecimiento();
-        p.setSize(550, 440);
-        p.setLocation(5, 5);
+        RegistrodePosicultores p4 = new RegistrodePosicultores();
+        p4.setSize(550, 440);
+        p4.setLocation(5, 5);
         Vista_info.removeAll();
-        Vista_info.add(p, BorderLayout.CENTER);
         Vista_info.revalidate();
         Vista_info.repaint();
+        Vista_info.setLayout(new BorderLayout());
+        Vista_info.add(p4, BorderLayout.CENTER);
     }
     
     public static void main(String args[]) {

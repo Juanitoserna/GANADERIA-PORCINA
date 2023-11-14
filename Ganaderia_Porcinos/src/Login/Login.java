@@ -11,6 +11,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.awt.Color;
 import java.awt.Image;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.ImageIcon;
 
 /**
@@ -30,13 +32,9 @@ public class Login extends javax.swing.JFrame {
         ConsumoAPI consumo = new ConsumoAPI();
         Gson gson = new Gson();
         
-        //haciendo el consumo de la poke api
-        String respuesta = consumo.consumoGET("http://localhost/APIPorcinos/Administrador/Obtener.php");
-        //convirtiendo la respuesta en un objeto para acceder a sus key
-        JsonObject objetoRespuesta = JsonParser.parseString(respuesta).getAsJsonObject();
-        //convirtiendo el objeto en un array
-        JsonArray results = objetoRespuesta.get("registros").getAsJsonArray();
-        System.out.println("Datos: "+results);
+        Map<String, String> getData = new HashMap<>();
+            getData.put("id_cerdo", "C001");
+            System.out.println("Consumo SELECT: " + consumo.consumoGET("http://localhost/APIPorcinos/Usuario/getUsuario.php", getData));
         
         
         Image imgUsuario = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/user.png"));
@@ -73,10 +71,17 @@ public class Login extends javax.swing.JFrame {
         
         
         if (!campoUsuario.getText().equals("")&&!campo_pass.getText().equals("")) {
+            ConsumoAPI consumo = new ConsumoAPI();
             jLabelAlertU.setText("");
             jLabelAlertP.setText("");
             
+            String usuario = jLabelAlertU.getText();
             //validar que exista el usuario
+            //GET con Datos
+            Map<String, String> getData = new HashMap<>();
+            getData.put("correo_usuario", usuario);
+            System.out.println("Consumo SELECT: " + consumo.consumoGET("http://localhost/APIPorcinos/Usuario/getUsuario.php", getData));
+            
             
         }
     }

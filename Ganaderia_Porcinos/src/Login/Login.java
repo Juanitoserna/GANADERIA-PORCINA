@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Login;
 
 import clases.ConsumoAPI;
@@ -17,10 +13,7 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-/**
- *
- * @author Equipo
- */
+
 public class Login extends javax.swing.JFrame {
 
     public Login() {
@@ -34,8 +27,13 @@ public class Login extends javax.swing.JFrame {
         ConsumoAPI consumo = new ConsumoAPI();
         Gson gson = new Gson();
         
-        
-        
+        //haciendo el consumo de la poke api
+        String respuesta = consumo.consumoGET("http://localhost/APIPorcinos/Administrador/Obtener.php");
+        //convirtiendo la respuesta en un objeto para acceder a sus key
+        JsonObject objetoRespuesta = JsonParser.parseString(respuesta).getAsJsonObject();
+        //convirtiendo el objeto en un array
+        JsonArray results = objetoRespuesta.get("registros").getAsJsonArray();
+        System.out.println("Datos: "+results);
         
         Image imgUsuario = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/user.png"));
         imgUsuario = imgUsuario.getScaledInstance(50, 40, Image.SCALE_SMOOTH);
@@ -71,6 +69,7 @@ public class Login extends javax.swing.JFrame {
         
         
         if (!campoUsuario.getText().equals("")&&!campo_pass.getText().equals("")) {
+            
             ConsumoAPI consumo = new ConsumoAPI();
             jLabelAlertU.setText("");
             jLabelAlertP.setText("");

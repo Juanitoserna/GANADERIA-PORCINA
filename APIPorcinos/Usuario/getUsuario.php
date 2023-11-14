@@ -5,18 +5,35 @@
 
     include '../Conexion.php';
 
-    if (!empty($_GET['correo_usuario'])) {
-	    $consultaAdmin = $base_de_datos->query("SELECT * FROM administrador WHERE correo = ".$_GET['correo_usuario']);
+    if (!empty($_POST['correo_usuario']) && !empty($_POST['password_usuario'])) {
+	    $consultaAdmin = $base_de_datos->query("SELECT * FROM administrador WHERE correo = '".$_POST['correo_usuario']."' AND passw = '".md5($_POST['password_usuario'])."'");
 	    $datosAdmin = $consultaAdmin->fetchAll();
 
-        $consultaPorci = $base_de_datos->query("SELECT * FROM porcicultor WHERE correo = ".$_GET['correo_usuario']);
+        $consultaPorci = $base_de_datos->query("SELECT * FROM porcicultor WHERE correo = '".$_POST['correo_usuario']."' AND passw = '".md5($_POST['password_usuario'])."'");
 	    $datosPorci = $consultaPorci->fetchAll();
 
         if (sizeof($datosAdmin)>0) {
-            echo json_encode((sizeof($datosAdmin)>0)? $datosAdmin[0] : $datosAdmin);
-            
+            $respuesta = [
+                'status' => true,
+                'mesagge' => "OK##PROCESS",
+                'tipo_user' => 'administrador',
+                'data_user' => $datosAdmin[0]
+            ];
+            echo json_encode($respuesta);
         }else if (sizeof($datosPorci)>0) {
-            echo json_encode((sizeof($datosPorci)>0)? $datosPorci[0] : $datosPorci);
+            $respuesta = [
+                'status' => true,
+                'mesagge' => "OK##PROCESS",
+                'tipo_user' => 'porcicultor',
+                'data_user' => $datosPorci[0]
+            ];
+            echo json_encode($respuesta);
+        }else{
+            $respuesta = [
+                'status' => false,
+                'mesagge' => "USER##NOT##FOUND"
+            ];
+            echo json_encode($respuesta);
         }
 	}else{
         $respuesta = [

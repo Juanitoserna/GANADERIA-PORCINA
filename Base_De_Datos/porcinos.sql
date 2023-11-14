@@ -4,7 +4,7 @@ CREATE TABLE administrador(
     id_administrador CHAR(10) PRIMARY KEY,
     nombre CHAR(30),
     correo  CHAR(100),
-    passw CHAR(100),
+    passw CHAR(255),
     contacto CHAR(30)
 )ENGINE=InnoDB;
 INSERT INTO administrador (id_administrador, nombre, correo, passw, contacto)
@@ -33,7 +33,7 @@ CREATE TABLE porcicultor(
     contacto CHAR(12),
     correo CHAR(60),
     experiencia VARCHAR(250),
-    passw CHAR(20),
+    passw CHAR(255),
     id_finca CHAR(6),
 
     FOREIGN KEY (id_finca) REFERENCES fincas (id_finca)

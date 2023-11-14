@@ -26,7 +26,7 @@
             $consulta->bindParam(':con', $contacto);
             $consulta->bindParam(':cor', $correo);
             $consulta->bindParam(':exp', $experiencia);
-            $consulta->bindParam(':pas', $passw);
+            $consulta->bindParam(':pas', md5($passw));
             $consulta->bindParam(':finca', $id_finca);
             
             $proceso = $consulta->execute();

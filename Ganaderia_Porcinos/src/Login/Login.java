@@ -9,11 +9,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
@@ -32,9 +34,7 @@ public class Login extends javax.swing.JFrame {
         ConsumoAPI consumo = new ConsumoAPI();
         Gson gson = new Gson();
         
-        Map<String, String> getData = new HashMap<>();
-            getData.put("id_cerdo", "C001");
-            System.out.println("Consumo SELECT: " + consumo.consumoGET("http://localhost/APIPorcinos/Usuario/getUsuario.php", getData));
+        
         
         
         Image imgUsuario = getToolkit().createImage(ClassLoader.getSystemResource("imagenes/user.png"));
@@ -75,13 +75,26 @@ public class Login extends javax.swing.JFrame {
             jLabelAlertU.setText("");
             jLabelAlertP.setText("");
             
-            String usuario = jLabelAlertU.getText();
+            String usuario = campoUsuario.getText();
+            String password = campo_pass.getText();
             //validar que exista el usuario
             //GET con Datos
             Map<String, String> getData = new HashMap<>();
             getData.put("correo_usuario", usuario);
-            System.out.println("Consumo SELECT: " + consumo.consumoGET("http://localhost/APIPorcinos/Usuario/getUsuario.php", getData));
+            getData.put("password_usuario", password);
             
+            String respuesta = consumo.consumoPOST("http://localhost/APIPorcinos/Usuario/getUsuario.php", getData);
+            System.out.println(respuesta);
+            //convirtiendo la respuesta en un objeto para acceder a sus key
+            JsonObject objetoJson = JsonParser.parseString(respuesta).getAsJsonObject();
+            
+            if (objetoJson.get("status").getAsBoolean() && objetoJson.get("tipo_user").getAsString().equals("administrador") ) {
+                System.out.println("Abriendo interfaz administrador");
+            }else if (objetoJson.get("status").getAsBoolean() && objetoJson.get("tipo_user").getAsString().equals("porcicultor") ) {
+                System.out.println("Abriendo interfaz porcicultor");
+            }else{
+                System.out.println("Mesnaje de error datos incorrectos usuario no encontrado");
+            }
             
         }
     }
@@ -90,7 +103,6 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jLabelimg = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabelusuario = new javax.swing.JLabel();
@@ -98,7 +110,7 @@ public class Login extends javax.swing.JFrame {
         campoUsuario = new javax.swing.JTextField();
         jLabelCandado = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        campo_pass = new javax.swing.JTextField();
+        campo_pass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabelCandado2 = new javax.swing.JLabel();
@@ -110,44 +122,29 @@ public class Login extends javax.swing.JFrame {
         jLabelimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerdoFondo.jpg"))); // NOI18N
         jLabelimg.setPreferredSize(new java.awt.Dimension(500, 500));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabelimg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(3, 3, 3)
+                .addComponent(jLabelimg, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel1.setText("USUARIO:");
+        jLabel1.setText("Correo:");
+
+        campoUsuario.setText("administrador@email.com");
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA:");
+
+        campo_pass.setText("12345");
 
         jButton1.setText("Iniciar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -225,8 +222,8 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +256,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelimg;
     private javax.swing.JLabel jLabelusuario;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

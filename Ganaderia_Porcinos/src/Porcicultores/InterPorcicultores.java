@@ -117,7 +117,7 @@ public class InterPorcicultores extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(controlCerdos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(31, 31, 31)
                 .addComponent(btnControlCrecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -186,6 +186,7 @@ public class InterPorcicultores extends javax.swing.JFrame {
         contenido.add(panelControlCrecimiento, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
+        setLocationRelativeTo(null);
     }//GEN-LAST:event_btnControlCrecimientoActionPerformed
 
     private void controlCerdosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlCerdosActionPerformed
@@ -197,6 +198,7 @@ public class InterPorcicultores extends javax.swing.JFrame {
         contenido.add(panelControlCerdos, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
+        setLocationRelativeTo(null);
     }//GEN-LAST:event_controlCerdosActionPerformed
 
     public static void main(String args[]) {
@@ -208,7 +210,19 @@ public class InterPorcicultores extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void cargarTabla(){
+        PanelControlCerdos panelControlCerdos = new PanelControlCerdos();
+        panelControlCerdos.setSize(630, 390);
+        setLocation(0,0);
+        panelControlCerdos.llenarTabla();
+        
+        contenido.removeAll();
+        contenido.add(panelControlCerdos, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+        setLocationRelativeTo(null);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnControlCrecimiento;
     private javax.swing.JPanel contenido;

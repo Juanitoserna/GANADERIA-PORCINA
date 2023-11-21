@@ -1,15 +1,115 @@
 
 package Porcicultores;
 
+import Clases.ButtonEditor;
+import Clases.ButtonRenderer;
+import clases.Cerdos;
+import clases.ConsumoAPI;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.table.DefaultTableModel;
+
 public class PanelControlCerdos extends javax.swing.JPanel {
 
-    RegistrarCerdo registrarcerdo;
+    
+    DefaultTableModel tableModel;
+    Cerdos listaCerdos[];
     
     public PanelControlCerdos() {
         initComponents();
-       
+        initAlterntComponent();
+        tableModel =  (DefaultTableModel) this.tableCerdos.getModel();
     }
-  
+    
+    public void initAlterntComponent(){
+        ConsumoAPI ejemplo = new ConsumoAPI();
+        Gson gson = new Gson();
+        
+        String respuestaAll = ejemplo.consumoGET("http://localhost/APIPorcinos/Cerdos/Obtener.php");
+        JsonObject objetoRespuesta = JsonParser.parseString(respuestaAll).getAsJsonObject();
+        
+        JsonArray arreglocerdos = objetoRespuesta.getAsJsonArray("registros").getAsJsonArray();
+        listaCerdos = new Cerdos[arreglocerdos.size()];
+        
+        for (int i = 0; i < arreglocerdos.size(); i++) {
+            Cerdos temp = gson.fromJson(arreglocerdos.get(i).getAsJsonObject(), Cerdos.class);
+            listaCerdos[i] = temp;
+        }
+        tableModel =  (DefaultTableModel) this.tableCerdos.getModel();
+        this.tableCerdos.getColumn("Editar").setCellRenderer(new ButtonRenderer());
+        this.tableCerdos.getColumn("Editar").setCellEditor(new ButtonEditor(new JCheckBox()));
+        
+        this.tableCerdos.getColumn("Eliminar").setCellRenderer(new ButtonRenderer());
+        this.tableCerdos.getColumn("Eliminar").setCellEditor(new ButtonEditor(new JCheckBox()));
+        
+        // Llenar la tabla con los datos del arreglo
+        llenarTabla();
+        setVisible(true);
+    }
+    
+    public void llenarTabla(){
+        tableModel.setNumRows(0);
+        for (int i=0; i<listaCerdos.length; i++) {
+            String id_cerdo = listaCerdos[i].getId_cerdo();
+            String raza = listaCerdos[i].getRaza();
+            Float peso = listaCerdos[i].getPeso();
+            String fecha = listaCerdos[i].getFecha();
+            String estado = listaCerdos[i].getEstado();
+            String id_finca = listaCerdos[i].getId_finca();
+            
+            JButton btnAccionModificar = new JButton("Modificar");
+            btnAccionModificar.setBackground(new Color(144,238,144));
+            btnAccionModificar.setOpaque(true);
+            
+            JButton btnAccionEliminar = new JButton("Eliminar");
+            btnAccionEliminar.setBackground(Color.RED);
+            btnAccionEliminar.setOpaque(true);
+            
+            final int posicion = i;
+            btnAccionModificar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    accionClickBotonModificar( listaCerdos[posicion] );
+                }
+            });
+            btnAccionEliminar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    accionClickBotonEliminar( listaCerdos[posicion] );
+                }
+            });
+            Object[] temporal = new Object[]{ id_cerdo, raza, peso, fecha, estado, id_finca, btnAccionModificar , btnAccionEliminar };
+            tableModel.addRow(temporal);
+        }
+    }
+    public void accionClickBotonModificar(Cerdos listaPersona){
+        System.out.println("funcionando boton modificar");
+        //UpdatePersona ventana = new UpdatePersona(this, listaPersona);
+    }
+    public void accionClickBotonEliminar(Cerdos temp){
+        ConsumoAPI ejemplo = new ConsumoAPI();
+        String tempCerdo = temp.getId_cerdo();
+        Map<String, String> deleteData = new HashMap<>();
+        deleteData.put("id_cerdo", tempCerdo);
+        String respuesta = ejemplo.consumoPOST("http://localhost/APIPorcinos/Cerdos/Delete.php", deleteData);
+        JsonObject objetoJson = JsonParser.parseString(respuesta).getAsJsonObject();
+        
+        if ( objetoJson.get("status").getAsBoolean()  ) {
+            initAlterntComponent();
+            
+        }else{
+            System.out.println("Error al eliminar los datos de la tabla");
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -129,25 +229,17 @@ public class PanelControlCerdos extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "N° Identificacion", "Raza", "Sexo", "Peso", "Fecha", "Estado", "Elminar", "Editar"
+                "N° Identificacion", "Raza", "Sexo", "Peso", "Fecha", "Estado", "Eliminar", "Editar"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, true, true
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tableCerdos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableCerdos);
         if (tableCerdos.getColumnModel().getColumnCount() > 0) {
             tableCerdos.getColumnModel().getColumn(0).setResizable(false);
@@ -156,8 +248,6 @@ public class PanelControlCerdos extends javax.swing.JPanel {
             tableCerdos.getColumnModel().getColumn(3).setResizable(false);
             tableCerdos.getColumnModel().getColumn(4).setResizable(false);
             tableCerdos.getColumnModel().getColumn(5).setResizable(false);
-            tableCerdos.getColumnModel().getColumn(6).setResizable(false);
-            tableCerdos.getColumnModel().getColumn(7).setResizable(false);
         }
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
@@ -168,14 +258,13 @@ public class PanelControlCerdos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
-            .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(bgLayout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addGroup(bgLayout.createSequentialGroup()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(bgLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +295,8 @@ public class PanelControlCerdos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        RegistrarCerdo ventana = new RegistrarCerdo();
+        ventana.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnBuscarCerdosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCerdosActionPerformed
@@ -227,6 +317,8 @@ public class PanelControlCerdos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableCerdos;
     // End of variables declaration//GEN-END:variables
+
+    
 
    
 }

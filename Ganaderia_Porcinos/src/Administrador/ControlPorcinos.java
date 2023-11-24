@@ -77,11 +77,12 @@ public class ControlPorcinos extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(578, 469));
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("TODOS LOS CERDOS REGISTRADOS");
 
@@ -97,10 +98,8 @@ public class ControlPorcinos extends javax.swing.JPanel {
         );
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         tablaCerdos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tablaCerdos.setForeground(new java.awt.Color(0, 0, 0));
         tablaCerdos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -112,10 +111,8 @@ public class ControlPorcinos extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tablaCerdos);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("BUSCAR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -147,14 +144,8 @@ public class ControlPorcinos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tablaCerdos;

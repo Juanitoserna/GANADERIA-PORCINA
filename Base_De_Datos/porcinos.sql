@@ -94,3 +94,11 @@ CREATE TABLE factura(
     FOREIGN KEY (id_venta) REFERENCES venta (id_venta),
     FOREIGN KEY (id_administrador) REFERENCES administrador (id_administrador)
 )ENGINE=InnoDB;
+
+CREATE TABLE peso_cerdos(
+    id INT(10) PRIMARY KEY ,
+    id_cerdo CHAR(6),
+    peso FLOAT(9,2),
+
+    FOREIGN KEY (id_cerdo) REFERENCES cerdos (id_cerdo)
+)ENGINE=InnoDB;

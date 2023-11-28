@@ -1,8 +1,11 @@
 package Porcicultores;
+import clases.Cerdos;
 import java.awt.BorderLayout;
 
 
+
 public class InterPorcicultores extends javax.swing.JFrame {
+    Cerdos listaCerdos[];
     public InterPorcicultores() {
         initComponents();
         initAlternComponents();
@@ -178,7 +181,7 @@ public class InterPorcicultores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnControlCrecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControlCrecimientoActionPerformed
-        PanelControlCrecimiento panelControlCrecimiento = new PanelControlCrecimiento();
+        PanelControlCrecimiento panelControlCrecimiento = new PanelControlCrecimiento(this);
         panelControlCrecimiento.setSize(630, 390);
         setLocation(0,0);
         
@@ -200,7 +203,18 @@ public class InterPorcicultores extends javax.swing.JFrame {
         contenido.repaint();
         setLocationRelativeTo(null);
     }//GEN-LAST:event_controlCerdosActionPerformed
-
+    
+    public void agregarPesoCerdo(Cerdos cerdo){
+        AgregarPesoCerdo panelAgregar = new AgregarPesoCerdo(cerdo);
+        panelAgregar.setSize(630, 390);
+        setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(panelAgregar, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+        setLocationRelativeTo(null);
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         /* Create and display the form */

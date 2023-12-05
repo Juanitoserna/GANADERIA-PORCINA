@@ -1,12 +1,19 @@
 package Porcicultores;
 import clases.Cerdos;
+import clases.ConsumoAPI;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.awt.BorderLayout;
 
 
 
 public class InterPorcicultores extends javax.swing.JFrame {
     Cerdos listaCerdos[];
+    int cantidadDiponible;
     public InterPorcicultores() {
+        this.cantidadDiponible = 0;
         initComponents();
         initAlternComponents();
        
@@ -15,9 +22,20 @@ public class InterPorcicultores extends javax.swing.JFrame {
     
     public void initAlternComponents(){
         setLocationRelativeTo(null);
-       
+        cantCerdo();
     }
     
+    public void cantCerdo(){
+        Informacion informacion = new Informacion();
+        informacion.setSize(630, 390);
+        setLocation(0,0);
+        
+        contenido.removeAll();
+        contenido.add(informacion, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+        setLocationRelativeTo(null); 
+   }
    
  
   
@@ -27,10 +45,10 @@ public class InterPorcicultores extends javax.swing.JFrame {
         menu = new javax.swing.JPanel();
         icon = new javax.swing.JLabel();
         nombreUser = new javax.swing.JLabel();
-        verPerfil = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         controlCerdos = new javax.swing.JButton();
         btnControlCrecimiento = new javax.swing.JButton();
+        jLabelNombreUsuario = new javax.swing.JLabel();
         menuTitulo = new javax.swing.JPanel();
         img = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
@@ -42,16 +60,9 @@ public class InterPorcicultores extends javax.swing.JFrame {
 
         icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        nombreUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nombreUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nombreUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombreUser.setText("Nombre Usuario");
-
-        verPerfil.setBackground(new java.awt.Color(119, 119, 91));
-        verPerfil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        verPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        verPerfil.setText("Ver Perfil");
-        verPerfil.setBorderPainted(false);
-        verPerfil.setFocusable(false);
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
@@ -89,23 +100,23 @@ public class InterPorcicultores extends javax.swing.JFrame {
             .addComponent(controlCerdos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnControlCrecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuLayout.createSequentialGroup()
-                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(menuLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(nombreUser, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(menuLayout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(verPerfil)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                        .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nombreUser)
+                            .addGroup(menuLayout.createSequentialGroup()
+                                .addComponent(jLabelNombreUsuario)
+                                .addGap(48, 48, 48)))
+                        .addGap(28, 28, 28))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,11 +124,11 @@ public class InterPorcicultores extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreUser)
+                .addComponent(nombreUser, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(verPerfil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelNombreUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(controlCerdos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -135,7 +146,7 @@ public class InterPorcicultores extends javax.swing.JFrame {
         menuTitulo.setLayout(menuTituloLayout);
         menuTituloLayout.setHorizontalGroup(
             menuTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 630, Short.MAX_VALUE)
+            .addComponent(img, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuTituloLayout.setVerticalGroup(
             menuTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +160,11 @@ public class InterPorcicultores extends javax.swing.JFrame {
         contenido.setLayout(contenidoLayout);
         contenidoLayout.setHorizontalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+            .addGap(0, 395, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,9 +173,9 @@ public class InterPorcicultores extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(menuTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(contenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,10 +254,10 @@ public class InterPorcicultores extends javax.swing.JFrame {
     private javax.swing.JButton controlCerdos;
     private javax.swing.JLabel icon;
     private javax.swing.JLabel img;
+    private javax.swing.JLabel jLabelNombreUsuario;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel menu;
     private javax.swing.JPanel menuTitulo;
     private javax.swing.JLabel nombreUser;
-    private javax.swing.JButton verPerfil;
     // End of variables declaration//GEN-END:variables
 }

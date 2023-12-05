@@ -43,6 +43,7 @@ public class PanelControlCerdos extends javax.swing.JPanel {
         for (int i = 0; i < arreglocerdos.size(); i++) {
             Cerdos temp = gson.fromJson(arreglocerdos.get(i).getAsJsonObject(), Cerdos.class);
             listaCerdos[i] = temp;
+            
         }
         tableModel =  (DefaultTableModel) this.tableCerdos.getModel();
         this.tableCerdos.getColumn("Editar").setCellRenderer(new ButtonRenderer());

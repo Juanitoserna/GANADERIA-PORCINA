@@ -17,6 +17,7 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
     Peso lista [];
     DefaultTableModel tableModel;
     String id;
+    
     public AgregarPesoCerdo(Cerdos cerdo) {
         this.cerdo = cerdo;
         this.id = id;
@@ -28,30 +29,41 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
     public void initAlterntComponent(){
         String peso_anterior = Float.toString(cerdo.getPeso());
         campoPesoAnterior.setText(peso_anterior);
-        String id = cerdo.getId_cerdo();
+        String id_cerdo = cerdo.getId_cerdo();
+        
         ConsumoAPI ejemplo = new ConsumoAPI();
         Gson gson = new Gson();
         
         // GET con Datos
         Map<String, String> getData = new HashMap<>();
-        getData.put("id_cerdo", id);
-        
+        getData.put("id_cerdo", id_cerdo);
         String respuesta = ejemplo.consumoPOST("http://localhost/APIPorcinos/Peso/Obtener.php", getData);
+        
         JsonObject objetoJson = JsonParser.parseString(respuesta).getAsJsonObject();
         System.out.println(respuesta);
         
-        JsonArray arreglocerdos = objetoJson.getAsJsonArray("registros").getAsJsonArray();
-        lista = new Peso [arreglocerdos.size()];
-        
-        for (int i = 0; i < arreglocerdos.size(); i++) {
-            Peso temp = gson.fromJson(arreglocerdos.get(i).getAsJsonObject(), Peso.class);
-            System.out.println("temp2 " + temp.getCerdo());
-            lista[i] = temp;
-            System.out.println("temp" + lista[i].getCerdo());
-            this.id = lista[i].getCerdo();
+        // Verifica si la clave "registros" está presente en el JSON
+        if (objetoJson.has("registros") && objetoJson.get("registros").isJsonArray()) {
+            JsonArray arreglocerdos = objetoJson.getAsJsonArray("registros");
+
+            // Verifica si la lista no está vacía
+            if (arreglocerdos.size() > 0) {
+                lista = new Peso[arreglocerdos.size()];
+
+                for (int i = 0; i < arreglocerdos.size(); i++) {
+                    Peso temp = gson.fromJson(arreglocerdos.get(i).getAsJsonObject(), Peso.class);
+                    lista[i] = temp;
+                    this.id = temp.getCerdo(); // Actualiza la variable id usando el último valor
+                    System.out.println("entro aqui");
+                }
+            } else {
+                System.out.println("La lista 'arreglocerdos' está vacía.");
+            }
+        } else {
+            System.out.println("La clave 'registros' no está presente en el JSON.");
         }
         tableModel =  (DefaultTableModel) this.tablaCerdo.getModel();
-        
+        System.out.println("id" + this.id);
         // Llenar la tabla con los datos del arreglo
         llenarTabla();
         setVisible(true);
@@ -184,16 +196,9 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
                 "ID:", "Cerdo:", "Pesos:"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Float.class, java.lang.Object.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -247,7 +252,7 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         ConsumoAPI ejemplo = new ConsumoAPI();
-        System.out.println("id" + this.id);
+        
         String campo_nuevo = campoPesoNuevo.getText();
         String campo_anterior = campoPesoAnterior.getText();
         if (campo_nuevo.equals("")) {

@@ -47,12 +47,15 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         C_Crecimiento1 = new javax.swing.JButton();
         Vista_info = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 191));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,7 +71,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/campo.jpg"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 109));
 
-        jPanel3.setBackground(new java.awt.Color(51, 51, 0));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 191));
 
         CampoFoto.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -87,9 +90,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
-        perfil.setBackground(new java.awt.Color(51, 51, 0));
+        perfil.setBackground(new java.awt.Color(255, 255, 191));
         perfil.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        perfil.setForeground(new java.awt.Color(255, 255, 255));
+        perfil.setForeground(new java.awt.Color(0, 0, 0));
         perfil.setText("PERFIL");
         perfil.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 191)));
         perfil.setFocusable(false);
@@ -101,7 +104,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         Campo_Nombre.setBackground(new java.awt.Color(255, 255, 255));
         Campo_Nombre.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        Campo_Nombre.setForeground(new java.awt.Color(255, 255, 255));
+        Campo_Nombre.setForeground(new java.awt.Color(0, 0, 0));
         Campo_Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Campo_Nombre.setText("Nombre Usuario");
 
@@ -151,12 +154,12 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        boton.setBackground(new java.awt.Color(51, 51, 0));
+        boton.setBackground(new java.awt.Color(255, 255, 191));
 
-        C_Porcinos.setBackground(new java.awt.Color(51, 51, 0));
+        C_Porcinos.setBackground(new java.awt.Color(255, 255, 191));
         C_Porcinos.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        C_Porcinos.setForeground(new java.awt.Color(255, 255, 255));
-        C_Porcinos.setText("Control de Porcionos");
+        C_Porcinos.setForeground(new java.awt.Color(0, 0, 0));
+        C_Porcinos.setText("Lista de Cerdos");
         C_Porcinos.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 191)));
         C_Porcinos.setFocusable(false);
         C_Porcinos.addActionListener(new java.awt.event.ActionListener() {
@@ -165,9 +168,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
             }
         });
 
-        C_Crecimiento.setBackground(new java.awt.Color(51, 51, 0));
+        C_Crecimiento.setBackground(new java.awt.Color(255, 255, 191));
         C_Crecimiento.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        C_Crecimiento.setForeground(new java.awt.Color(255, 255, 255));
+        C_Crecimiento.setForeground(new java.awt.Color(0, 0, 0));
         C_Crecimiento.setText("Lista de Posicultores");
         C_Crecimiento.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 191)));
         C_Crecimiento.setFocusable(false);
@@ -177,16 +180,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(51, 51, 0));
+        jButton3.setBackground(new java.awt.Color(255, 255, 191));
         jButton3.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Cerrar Session");
         jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 191)));
         jButton3.setFocusable(false);
 
-        C_Crecimiento1.setBackground(new java.awt.Color(51, 51, 0));
+        C_Crecimiento1.setBackground(new java.awt.Color(255, 255, 191));
         C_Crecimiento1.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
-        C_Crecimiento1.setForeground(new java.awt.Color(255, 255, 255));
+        C_Crecimiento1.setForeground(new java.awt.Color(0, 0, 0));
         C_Crecimiento1.setText("Registro Posicultores");
         C_Crecimiento1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 191)));
         C_Crecimiento1.setFocusable(false);
@@ -216,11 +219,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         botonLayout.setVerticalGroup(
             botonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(botonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(C_Porcinos, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(C_Crecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addComponent(C_Porcinos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(C_Crecimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
                 .addComponent(C_Crecimiento1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,15 +231,36 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         Vista_info.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTextPane1.setEditable(false);
+        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextPane1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTextPane1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextPane1.setText("Sistema de Gestión Ganadera: Funciones Destacadas\n\nNuestro avanzado sistema de gestión ganadera ofrece una variedad de funciones diseñadas para simplificar y mejorar la eficiencia en la administración de granjas porcícolas. Entre las principales capacidades, destacan: \n \n1. Creación de Posicultores: \n2. Visualización de Listado de Cerdos Registrados:\n3.Listado de Posicultores:\n\nEn resumen, nuestro sistema de gestión ganadera está diseñado para proporcionar una solución integral que simplifica la administración de granjas porcícolas al permitir la creación de posicultores, ofrecer listados detallados de cerdos registrados y posicultores.");
+        jScrollPane1.setViewportView(jTextPane1);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pagina principal.jpg"))); // NOI18N
+
         javax.swing.GroupLayout Vista_infoLayout = new javax.swing.GroupLayout(Vista_info);
         Vista_info.setLayout(Vista_infoLayout);
         Vista_infoLayout.setHorizontalGroup(
             Vista_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(Vista_infoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         Vista_infoLayout.setVerticalGroup(
             Vista_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Vista_infoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Vista_infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -248,10 +271,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(boton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Vista_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Vista_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,10 +434,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton perfil;
     // End of variables declaration//GEN-END:variables
 

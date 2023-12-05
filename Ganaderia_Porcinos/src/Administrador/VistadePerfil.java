@@ -54,7 +54,7 @@ public class VistadePerfil extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         Campo_info = new javax.swing.JTextArea();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 255, 191));
         setForeground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));

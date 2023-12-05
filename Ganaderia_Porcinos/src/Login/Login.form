@@ -118,7 +118,7 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="campoUsuario" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabelAlertU" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -144,7 +144,7 @@
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelCandado2" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -161,9 +161,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoUsuario">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="administrador@email.com"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCandado">
         </Component>
@@ -176,9 +173,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campo_pass">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="12345"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPasswordField()"/>
           </AuxValues>

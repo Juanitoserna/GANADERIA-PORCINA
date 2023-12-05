@@ -1,5 +1,6 @@
 package Login;
 
+import Administrador.VistaAdministrador;
 import clases.ConsumoAPI;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -88,6 +89,9 @@ public class Login extends javax.swing.JFrame {
             JsonObject objetoJson = JsonParser.parseString(respuesta).getAsJsonObject();
             
             if (objetoJson.get("status").getAsBoolean() && objetoJson.get("tipo_user").getAsString().equals("administrador") ) {
+                VistaAdministrador ventanaAdmin = new VistaAdministrador();
+                ventanaAdmin.setVisible(true);
+                setVisible(false);
                 System.out.println("Abriendo interfaz administrador");
             }else if (objetoJson.get("status").getAsBoolean() && objetoJson.get("tipo_user").getAsString().equals("porcicultor") ) {
                 System.out.println("Abriendo interfaz porcicultor");
@@ -138,12 +142,8 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Correo:");
 
-        campoUsuario.setText("administrador@email.com");
-
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA:");
-
-        campo_pass.setText("12345");
 
         jButton1.setText("Iniciar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelAlertU))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -214,7 +214,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabelCandado2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

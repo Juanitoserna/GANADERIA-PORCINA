@@ -10,6 +10,7 @@
 	    $datosAdmin = $consultaAdmin->fetchAll();
 
         $consultaPorci = $base_de_datos->query("SELECT * FROM porcicultor WHERE correo = '".$_POST['correo_usuario']."' AND passw = '".md5($_POST['password_usuario'])."'");
+
 	    $datosPorci = $consultaPorci->fetchAll();
 
         if (sizeof($datosAdmin)>0) {

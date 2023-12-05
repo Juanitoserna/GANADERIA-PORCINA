@@ -192,14 +192,14 @@ public class ListadoCerdos extends javax.swing.JFrame {
         for(int i = 0; i < arregloCerdos.size(); i++){
             Cerdos temp = gson.fromJson(arregloCerdos.get(i).getAsJsonObject(), Cerdos.class);
             listaCerdos[i] = temp;
-            System.out.println(listaCerdos[i].getId_cerdos());
+            System.out.println(listaCerdos[i].getId_cerdo());
         }
         this.modelo.setRowCount(0);
         for(int i = 0; i < this.listaCerdos.length; i++){
             if(this.listaCerdos[i]!=null){
                 
                 
-                Object temporal [] = {this.listaCerdos[i].getId_cerdos(), this.listaCerdos[i].getRaza(), this.listaCerdos[i].getSexo(), this.listaCerdos[i].getPeso(), this.listaCerdos[i].getFecha(), this.listaCerdos[i].getEstado(), this.listaCerdos[i].getId_finca()};
+                Object temporal [] = {this.listaCerdos[i].getId_cerdo(), this.listaCerdos[i].getRaza(), this.listaCerdos[i].getSexo(), this.listaCerdos[i].getPeso(), this.listaCerdos[i].getFecha(), this.listaCerdos[i].getEstado(), this.listaCerdos[i].getId_finca()};
                 this.modelo.addRow(temporal);
                 revalidate();
             }

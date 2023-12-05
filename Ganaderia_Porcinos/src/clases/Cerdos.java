@@ -3,15 +3,19 @@ package clases;
 
 
 public class Cerdos {
-    String id_cerdo;
-    String raza;
-    String sexo;
-    String peso;
-    String fecha;
-    String estado;
-    String id_finca;
 
-    public Cerdos(String id_cerdo, String raza, String sexo, String peso, String fecha, String estado, String id_finca) {
+    
+    
+    String id_cerdo;	
+    String raza;	
+    String sexo;
+    Float peso;
+    String fecha;	
+    String estado;	
+    String id_finca;
+    
+    public Cerdos(String id_cerdo, String raza, String sexo, Float peso, String fecha, String estado, String id_finca) {
+
         this.id_cerdo = id_cerdo;
         this.raza = raza;
         this.sexo = sexo;
@@ -21,11 +25,12 @@ public class Cerdos {
         this.id_finca = id_finca;
     }
 
-    public String getId_cerdos() {
+    
+    public String getId_cerdo() {
         return id_cerdo;
     }
 
-    public void setId_cerdos(String id_cerdo) {
+    public void setId_cerdo(String id_cerdo) {
         this.id_cerdo = id_cerdo;
     }
 
@@ -45,11 +50,12 @@ public class Cerdos {
         this.sexo = sexo;
     }
 
-    public String getPeso() {
+
+    public Float getPeso() {
         return peso;
     }
 
-    public void setPeso(String peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
     }
 
@@ -77,4 +83,5 @@ public class Cerdos {
         this.id_finca = id_finca;
     }
     
+
 }

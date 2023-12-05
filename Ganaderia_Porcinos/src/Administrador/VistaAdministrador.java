@@ -395,7 +395,15 @@ public class VistaAdministrador extends javax.swing.JFrame {
         Vista_info.add(p4, BorderLayout.CENTER);
     }
     
-
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VistaAdministrador().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton C_Crecimiento;
     private javax.swing.JButton C_Crecimiento1;

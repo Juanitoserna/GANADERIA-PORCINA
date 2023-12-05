@@ -92,46 +92,67 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
         campoPesoAnterior = new javax.swing.JTextField();
         jLabelNuevo = new javax.swing.JLabel();
         campoPesoNuevo = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
         btnAgregar = new javax.swing.JButton();
         Alert = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         jPanelTabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCerdo = new javax.swing.JTable();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanelTitulo.setBackground(new java.awt.Color(119, 119, 91));
 
-        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelTitulo.setFont(new java.awt.Font("Arial Narrow", 1, 36)); // NOI18N
         jLabelTitulo.setText("CONTROL DEL PESO DEL CERDO");
 
         javax.swing.GroupLayout jPanelTituloLayout = new javax.swing.GroupLayout(jPanelTitulo);
         jPanelTitulo.setLayout(jPanelTituloLayout);
         jPanelTituloLayout.setHorizontalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTituloLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTituloLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabelTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(60, 60, 60))
         );
         jPanelTituloLayout.setVerticalGroup(
             jPanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTituloLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+            .addGroup(jPanelTituloLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabelTitulo)
-                .addGap(14, 14, 14))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
+
+        add(jPanelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-11, 0, 630, -1));
 
         jPanelForm.setBackground(new java.awt.Color(255, 255, 191));
 
-        jLabelForm.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelForm.setFont(new java.awt.Font("Arial Narrow", 1, 24)); // NOI18N
         jLabelForm.setText("AGREGAR PESO");
 
+        jLabelAnterior.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabelAnterior.setText("Peso anterior:");
 
-        campoPesoAnterior.setEnabled(false);
+        campoPesoAnterior.setBackground(new java.awt.Color(255, 255, 191));
+        campoPesoAnterior.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        campoPesoAnterior.setBorder(null);
 
+        jLabelNuevo.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabelNuevo.setText("Nuevo Peso:");
 
+        campoPesoNuevo.setBackground(new java.awt.Color(255, 255, 191));
+        campoPesoNuevo.setFont(new java.awt.Font("Arial Narrow", 0, 18)); // NOI18N
+        campoPesoNuevo.setBorder(null);
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 191));
+        btnAgregar.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setBorder(null);
+        btnAgregar.setFocusable(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -140,50 +161,72 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
 
         Alert.setForeground(new java.awt.Color(255, 0, 0));
 
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanelFormLayout = new javax.swing.GroupLayout(jPanelForm);
         jPanelForm.setLayout(jPanelFormLayout);
         jPanelFormLayout.setHorizontalGroup(
             jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFormLayout.createSequentialGroup()
-                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Alert, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelFormLayout.createSequentialGroup()
-                            .addGap(22, 22, 22)
+                .addGap(36, 36, 36)
+                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFormLayout.createSequentialGroup()
+                        .addComponent(jLabelForm)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelFormLayout.createSequentialGroup()
+                        .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAnterior)
                             .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(campoPesoAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                .addComponent(jLabelAnterior)
-                                .addComponent(jLabelNuevo)
-                                .addComponent(campoPesoNuevo)))
-                        .addGroup(jPanelFormLayout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jLabelForm))
-                        .addGroup(jPanelFormLayout.createSequentialGroup()
-                            .addGap(72, 72, 72)
-                            .addComponent(btnAgregar))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                                .addComponent(jSeparator2)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(campoPesoAnterior, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(campoPesoNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelNuevo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Alert, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(186, 186, 186))))
+            .addGroup(jPanelFormLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                    .addComponent(jSeparator3))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanelFormLayout.setVerticalGroup(
             jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFormLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addComponent(jLabelForm)
-                .addGap(25, 25, 25)
-                .addComponent(jLabelAnterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoPesoAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelNuevo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoPesoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(Alert)
-                .addGap(9, 9, 9)
-                .addComponent(btnAgregar)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGroup(jPanelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelFormLayout.createSequentialGroup()
+                        .addComponent(Alert, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))
+                    .addGroup(jPanelFormLayout.createSequentialGroup()
+                        .addComponent(jLabelAnterior)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoPesoAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelNuevo)
+                        .addGap(3, 3, 3)
+                        .addComponent(campoPesoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)))
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jPanelTabla.setBackground(new java.awt.Color(255, 204, 153));
+        add(jPanelForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 58, 240, 340));
+
+        jPanelTabla.setBackground(new java.awt.Color(255, 255, 191));
 
         tablaCerdo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -224,30 +267,10 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
             jPanelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTablaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        add(jPanelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 58, -1, 340));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -292,6 +315,9 @@ public class AgregarPesoCerdo extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelTabla;
     private javax.swing.JPanel jPanelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable tablaCerdo;
     // End of variables declaration//GEN-END:variables
 }
